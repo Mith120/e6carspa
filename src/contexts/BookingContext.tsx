@@ -67,13 +67,13 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
     const clonedCar = JSON.parse(JSON.stringify(selectedCar));
     console.log('Cloned selectedCar:', clonedCar);
 
-    // Defensive check: if clonedCar is an object but missing id, try to extract id from nested properties or fallback
-    let carId = clonedCar.id;
-    if (!carId && typeof clonedCar === 'object') {
-      carId = (clonedCar as unknown as { car?: { id?: string }; id?: string }).car?.id || (clonedCar as unknown as { id?: string }).id || '';
+    if (!selectedCar || !('_id' in selectedCar)) {
+      console.error("Selected car does not have a valid id:", selectedCar);
+      throw new Error('Selected car is invalid');
     }
+    const carId = selectedCar._id as string;
     if (!carId) {
-      console.error('Selected car does not have a valid id:', clonedCar);
+      console.error('Selected car does not have a valid _id:', selectedCar);
       throw new Error('Selected car is invalid');
     }
 
