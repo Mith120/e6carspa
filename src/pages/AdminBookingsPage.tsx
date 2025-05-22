@@ -35,7 +35,7 @@ const AdminBookingsPage: React.FC = () => {
   const fetchBookings = async () => {
     if (!token) return;
     try {
-      const response = await fetch('http://localhost:5000/api/admin/bookings', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/admin/bookings`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +63,7 @@ const AdminBookingsPage: React.FC = () => {
   const confirmBooking = async (id: string) => {
     setProcessingId(id);
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/bookings/${id}/confirm`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/admin/bookings/${id}/confirm`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -86,7 +86,7 @@ const AdminBookingsPage: React.FC = () => {
   const completeBooking = async (id: string) => {
     setProcessingId(id);
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/bookings/${id}/complete`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/admin/bookings/${id}/complete`, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,
