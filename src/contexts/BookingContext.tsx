@@ -63,9 +63,14 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       throw new Error('Incomplete booking details');
     }
 
+    if (!selectedCar.id) {
+      console.error('Selected car does not have an id:', selectedCar);
+      throw new Error('Selected car is invalid');
+    }
+
     const booking: Partial<Booking> = {
       userId: user?.id || '',
-      carId: (selectedCar).id,
+      carId: selectedCar.id,
       services: selectedServices,
       date: selectedDate ? selectedDate.toISOString() : undefined,
       timeSlot: selectedTimeSlot,
@@ -90,7 +95,9 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save booking');
+        const errorData = await response.json();
+        console.error('Booking save failed:', errorData);
+        throw new Error(errorData.message || 'Failed to save booking');
       }
 
       const data = await response.json();
