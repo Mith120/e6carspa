@@ -29,13 +29,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, []);
 
   const login = async (email: string, password: string, role: string = 'customer') => {
-    const response = await fetch('http://localhost:5000/api/login', {
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ email, password, role })
     });
+
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -56,13 +57,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signup = async (userData: Omit<User, 'id'> & { password: string }) => {
-    const response = await fetch('http://localhost:5000/api/register', {
+    const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/register`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userData)
     });
+
 
     if (!response.ok) {
       const errorData = await response.json();
