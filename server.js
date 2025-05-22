@@ -287,4 +287,12 @@ app.patch('/api/admin/bookings/:id/complete', authenticateToken, async (req, res
   }
 });
 
+import path from 'path';
+
+app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'dist', 'index.html'));
+});
+
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
