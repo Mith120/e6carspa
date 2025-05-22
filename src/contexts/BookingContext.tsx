@@ -63,14 +63,17 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       throw new Error('Incomplete booking details');
     }
 
-    // Defensive check: if selectedCar is an object but missing id, try to extract id from nested properties or fallback
-    let carId = selectedCar.id;
-    if (!carId && typeof selectedCar === 'object') {
-      // Attempt to find id in nested properties if any (example: selectedCar.car?.id)
-      carId = (selectedCar as unknown as { car?: { id?: string }; id?: string }).car?.id || (selectedCar as unknown as { id?: string }).id || '';
+    // Deep clone selectedCar to avoid mutation issues
+    const clonedCar = JSON.parse(JSON.stringify(selectedCar));
+    console.log('Cloned selectedCar:', clonedCar);
+
+    // Defensive check: if clonedCar is an object but missing id, try to extract id from nested properties or fallback
+    let carId = clonedCar.id;
+    if (!carId && typeof clonedCar === 'object') {
+      carId = (clonedCar as unknown as { car?: { id?: string }; id?: string }).car?.id || (clonedCar as unknown as { id?: string }).id || '';
     }
     if (!carId) {
-      console.error('Selected car does not have a valid id:', selectedCar);
+      console.error('Selected car does not have a valid id:', clonedCar);
       throw new Error('Selected car is invalid');
     }
 
