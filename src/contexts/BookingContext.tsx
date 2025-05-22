@@ -63,14 +63,20 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
       throw new Error('Incomplete booking details');
     }
 
-    if (!selectedCar.id) {
-      console.error('Selected car does not have an id:', selectedCar);
+    // Defensive check: if selectedCar is an object but missing id, try to extract id from nested properties or fallback
+    let carId = selectedCar.id;
+    if (!carId && typeof selectedCar === 'object') {
+      // Attempt to find id in nested properties if any (example: selectedCar.car?.id)
+      carId = (selectedCar as unknown as { car?: { id?: string }; id?: string }).car?.id || (selectedCar as unknown as { id?: string }).id || '';
+    }
+    if (!carId) {
+      console.error('Selected car does not have a valid id:', selectedCar);
       throw new Error('Selected car is invalid');
     }
 
     const booking: Partial<Booking> = {
       userId: user?.id || '',
-      carId: selectedCar.id,
+      carId: carId,
       services: selectedServices,
       date: selectedDate ? selectedDate.toISOString() : undefined,
       timeSlot: selectedTimeSlot,
