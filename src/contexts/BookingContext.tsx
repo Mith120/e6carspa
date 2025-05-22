@@ -65,7 +65,7 @@ export const BookingProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
     const booking: Partial<Booking> = {
       userId: user?.id || '',
-      carId: (selectedCar as any)._id,
+      carId: (selectedCar).id,
       services: selectedServices,
       date: selectedDate ? selectedDate.toISOString() : undefined,
       timeSlot: selectedTimeSlot,
