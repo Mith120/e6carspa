@@ -52,9 +52,11 @@ const ContactUsPage: React.FC = () => {
                 <div className="ml-4">
                   <h3 className="text-lg font-medium text-gray-900">Address</h3>
                   <p className="mt-1 text-gray-600">
-                    123 Service Road<br />
-                    Koramangala<br />
-                    Bengaluru, Karnataka 560034
+                    36,Geetha nagar main road<br/>
+                    Behind sakthi mahal<br/>
+                    Perundurai, Erode<br/>
+                    Tamil Nadu 638011
+              
                   </p>
                 </div>
               </div>
