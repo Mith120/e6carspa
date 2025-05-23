@@ -55,8 +55,7 @@ const ContactUsPage: React.FC = () => {
                     36,Geetha nagar main road<br/>
                     Behind sakthi mahal<br/>
                     Perundurai, Erode<br/>
-                    Tamil Nadu 638011
-              
+                    Tamil Nadu 638011<br/>
                   </p>
                 </div>
               </div>
