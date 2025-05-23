@@ -71,7 +71,7 @@ export const mechanics: Mechanic[] = [
     name: 'Rajesh Kumar',
     specialization: 'Engine Specialist',
     rating: 4.8,
-    image: 'https://images.pexels.com/photos/8460290/pexels-photo-8460290.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: 'https://content.jdmagicbox.com/comp/def_content/car-repair-and-services/shutterstock-81126196-car-repair-and-services-1-zk2yl.jpg',
     availability: generateTimeSlots()
   },
   {
@@ -79,7 +79,7 @@ export const mechanics: Mechanic[] = [
     name: 'Sunil Verma',
     specialization: 'Electrical Systems',
     rating: 4.6,
-    image: 'https://images.pexels.com/photos/3822719/pexels-photo-3822719.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: 'https://www.asdc.org.in/blogs/blogimage/d6ea59e195bd5b31172a1bb9f32bada1.jpg',
     availability: generateTimeSlots()
   },
   {
@@ -87,7 +87,7 @@ export const mechanics: Mechanic[] = [
     name: 'Priya Singh',
     specialization: 'Detailing Expert',
     rating: 4.9,
-    image: 'https://images.pexels.com/photos/6647111/pexels-photo-6647111.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    image: 'https://img.freepik.com/premium-photo/professional-car-detailing-expert-cleaning-polishing-luxury-car-interior_1293074-36454.jpg',
     availability: generateTimeSlots()
   }
 ];
