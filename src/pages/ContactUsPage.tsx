@@ -53,8 +53,8 @@ const ContactUsPage: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900">Address</h3>
                   <p className="mt-1 text-gray-600">
                     36,Geetha nagar main road<br/>
-                    Behind sakthi mahal<br/>
-                    Perundurai, Erode<br/>
+                    Behind Sakthi Mahal,<br/>
+                    Perundurai, Erode,<br/>
                     Tamil Nadu 638011<br/>
                   </p>
                 </div>
